@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2014 Michael Benford
  * License: MIT
  *
- * Generated at 2014-08-18 14:13:14 +0200
+ * Generated at 2014-10-15 13:09:08 +0200
  */
 (function() {
 'use strict';
@@ -19,6 +19,7 @@ var KEYS = {
     up: 38,
     down: 40,
     comma: 188,
+    semicolon: 186,
     leftArrow: 37,
     rightArrow: 39
 };
@@ -206,6 +207,7 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                 addOnSpace: [Boolean, false],
                 addOnComma: [Boolean, true],
                 addOnBlur: [Boolean, true],
+                addOnSemicolon: [Boolean, true],
                 allowedTagsPattern: [RegExp, /.+/],
                 enableEditingLastTag: [Boolean, false],
                 minTags: [Number],
@@ -245,7 +247,7 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
             };
         }],
         link: function(scope, element, attrs, ngModelCtrl) {
-            var hotkeys = [KEYS.enter, KEYS.comma, KEYS.space, KEYS.backspace, KEYS.leftArrow, KEYS.rightArrow],
+            var hotkeys = [KEYS.enter, KEYS.comma, KEYS.semicolon, KEYS.space, KEYS.backspace, KEYS.leftArrow, KEYS.rightArrow],
                 tagList = scope.tagList,
                 events = scope.events,
                 options = scope.options,
@@ -335,6 +337,7 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                     addKeys[KEYS.enter] = options.addOnEnter;
                     addKeys[KEYS.comma] = options.addOnComma;
                     addKeys[KEYS.space] = options.addOnSpace;
+                    addKeys[KEYS.semicolon] = options.addOnSemicolon;
 
                     shouldAdd = !options.addFromAutocompleteOnly && addKeys[key];
                     shouldRemove = !shouldAdd && key === KEYS.backspace && getInputText().length === 0;

@@ -9,6 +9,7 @@ var KEYS = {
     up: 38,
     down: 40,
     comma: 188,
+    semicolon: 186,
     leftArrow: 37,
     rightArrow: 39
 };
