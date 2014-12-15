@@ -119,7 +119,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, tagsInputConfig) 
         templateUrl: 'ngTagsInput/tags-input.html',
         controller: function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
-                id: [String, 'text'],
+                inputId: [String, 'text'],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
                 placeholder: [String, 'Add a tag'],
