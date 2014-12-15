@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2014 Michael Benford
  * License: MIT
  *
- * Generated at 2014-12-15 14:37:43 +0100
+ * Generated at 2014-12-15 14:44:05 +0100
  */
 (function() {
 'use strict';
@@ -195,7 +195,7 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
         templateUrl: 'ngTagsInput/tags-input.html',
         controller: ["$scope","$attrs","$element", function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
-                id: [String, 'text'],
+                inputId: [String, 'text'],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
                 placeholder: [String, 'Add a tag'],
@@ -831,7 +831,7 @@ tagsInput.provider('tagsInputConfig', function() {
 /* HTML templates */
 tagsInput.run(["$templateCache", function($templateCache) {
     $templateCache.put('ngTagsInput/tags-input.html',
-    "<div class=\"host\" tabindex=\"-1\" ti-transclude-append=\"\"><div class=\"tags\" ng-class=\"{focused: hasFocus}\"><ul class=\"tag-list\"><li class=\"tag-item\" ng-repeat=\"tag in tagList.items track by track(tag)\" ng-class=\"{ selected: $index == tagList.selected }\"><span ng-click=\"tagList.select($index)\">{{getDisplayText(tag)}}</span> <a class=\"remove-button\" ng-click=\"tagList.remove($index)\">{{options.removeTagSymbol}}</a></li></ul><ng-form name=\"tagInputForm\"><input name=\"tagInput\" id=\"{{options.id}}\" type=\"{{options.type}}\" autocomplete=\"{{options.autocomplete}}\" class=\"input\" placeholder=\"{{options.placeholder}}\" tabindex=\"{{options.tabindex}}\" ng-model=\"newTag.text\" tag-change=\"\" ng-trim=\"false\" ng-class=\"{'invalid-tag': newTag.invalid}\" ti-autosize=\"\" novalidate=\"\"></ng-form></div></div>"
+    "<div class=\"host\" tabindex=\"-1\" ti-transclude-append=\"\"><div class=\"tags\" ng-class=\"{focused: hasFocus}\"><ul class=\"tag-list\"><li class=\"tag-item\" ng-repeat=\"tag in tagList.items track by track(tag)\" ng-class=\"{ selected: $index == tagList.selected }\"><span ng-click=\"tagList.select($index)\">{{getDisplayText(tag)}}</span> <a class=\"remove-button\" ng-click=\"tagList.remove($index)\">{{options.removeTagSymbol}}</a></li></ul><ng-form name=\"tagInputForm\"><input name=\"tagInput\" id=\"{{options.inputId}}\" type=\"{{options.type}}\" autocomplete=\"{{options.autocomplete}}\" class=\"input\" placeholder=\"{{options.placeholder}}\" tabindex=\"{{options.tabindex}}\" ng-model=\"newTag.text\" tag-change=\"\" ng-trim=\"false\" ng-class=\"{'invalid-tag': newTag.invalid}\" ti-autosize=\"\" novalidate=\"\"></ng-form></div></div>"
   );
 
   $templateCache.put('ngTagsInput/auto-complete.html',
