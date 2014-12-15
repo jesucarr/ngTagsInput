@@ -119,6 +119,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, tagsInputConfig) 
         templateUrl: 'ngTagsInput/tags-input.html',
         controller: function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
+                id: [String, 'text'],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
                 placeholder: [String, 'Add a tag'],
@@ -273,7 +274,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, tagsInputConfig) 
                         e.preventDefault();
                     }
                     else if (shouldRemove) {
-                        
+
                         if (tagList.selected !== null) {
                             tag = tagList.remove(tagList.selected);
                             tagList.selected = null;
