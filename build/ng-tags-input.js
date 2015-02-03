@@ -2,10 +2,10 @@
  * ngTagsInput v2.0.1-fork
  * http://mbenford.github.io/ngTagsInput
  *
- * Copyright (c) 2013-2014 Michael Benford
+ * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2014-12-15 14:44:05 +0100
+ * Generated at 2015-02-03 11:56:14 +0100
  */
 (function() {
 'use strict';
@@ -76,6 +76,7 @@ function replaceAll(str, substr, newSubstr) {
 
 var tagsInput = angular.module('ngTagsInput', []);
 
+/*global console*/
 /**
  * @ngdoc directive
  * @name tagsInput
@@ -86,6 +87,7 @@ var tagsInput = angular.module('ngTagsInput', []);
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
  * @param {string=} [displayProperty=text] Property to be rendered as the tag label.
+ * @param {string=} [tagsExtraAttrs=text] Extra attibutes applied to the .tags element.
  * @param {number=} tabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [type=text] Input type for the control.
@@ -196,6 +198,7 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
         controller: ["$scope","$attrs","$element", function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
                 inputId: [String, 'text'],
+                tagsExtraAttrs: [String, ''],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
                 placeholder: [String, 'Add a tag'],
@@ -254,6 +257,10 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                 options = scope.options,
                 input = element.find('input'),
                 getInputText;
+
+            if (options.tagsExtraAttrs) {
+                angular.element(element[0].getElementsByClassName('tags')).attr(scope.$eval(options.tagsExtraAttrs));
+            }
 
             getInputText = function(){
                 if (scope.tagInputForm.tagInput.$valid){

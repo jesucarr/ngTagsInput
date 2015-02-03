@@ -1,3 +1,4 @@
+/*global console*/
 'use strict';
 
 /**
@@ -10,6 +11,7 @@
  *
  * @param {string} ngModel Assignable angular expression to data-bind to.
  * @param {string=} [displayProperty=text] Property to be rendered as the tag label.
+ * @param {string=} [tagsExtraAttrs=text] Extra attibutes applied to the .tags element.
  * @param {number=} tabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [type=text] Input type for the control.
@@ -120,6 +122,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, tagsInputConfig) 
         controller: function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
                 inputId: [String, 'text'],
+                tagsExtraAttrs: [String, ''],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
                 placeholder: [String, 'Add a tag'],
@@ -178,6 +181,10 @@ tagsInput.directive('tagsInput', function($timeout, $document, tagsInputConfig) 
                 options = scope.options,
                 input = element.find('input'),
                 getInputText;
+
+            if (options.tagsExtraAttrs) {
+                angular.element(element[0].getElementsByClassName('tags')).attr(scope.$eval(options.tagsExtraAttrs));
+            }
 
             getInputText = function(){
                 if (scope.tagInputForm.tagInput.$valid){

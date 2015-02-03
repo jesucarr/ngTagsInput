@@ -16,9 +16,9 @@
 
     .foo .tags .input {
       width: 1036px;
-      
+
     }
-    
+
     .foo .tags .tag-item {
       height: 50px;
     }
@@ -44,7 +44,7 @@
 <body ng-controller="Ctrl">
 <input type="checkbox" ng-model="visible"/>
   <form name="form">
-    <tags-input name="tags" ng-if="visible" ng-init="tags2=['item1', 'item2', 'item3']" ng-model="tags2" display-property="label"
+    <tags-input tags-extra-attrs="{customattr: 'yes'}" name="tags" ng-if="visible" ng-init="tags2=['item1', 'item2', 'item3']" ng-model="tags2" display-property="label"
                 add-on-enter="{{addOnEnter}}"
                 add-on-blur="true"
                 placeholder="{{placeholder}}"
