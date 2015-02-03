@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-02-03 11:56:14 +0100
+ * Generated at 2015-02-03 15:01:17 +0100
  */
 (function() {
 'use strict';
@@ -115,7 +115,7 @@ var tagsInput = angular.module('ngTagsInput', []);
  * @param {expression} onTagSelected Expression to evaluate upon selecting a tag. The selected tag is available as $tag.
  * @param {expression} onTagRemoved Expression to evaluate upon removing an existing tag. The removed tag is available as $tag.
  */
-tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", function($timeout, $document, tagsInputConfig) {
+tagsInput.directive('tagsInput', ["$timeout","$document","$parse","tagsInputConfig", function($timeout, $document, $parse, tagsInputConfig) {
     function TagList(options, events) {
         var self = {}, getTagText, setTagText, tagIsValid;
 
@@ -250,6 +250,12 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                 };
             };
         }],
+        compile: function(element, attrs) {
+            if (attrs.tagsExtraAttrs) {
+                angular.element(element[0].getElementsByClassName('tags')).attr($parse(attrs.tagsExtraAttrs)());
+            }
+            return this.link;
+        },
         link: function(scope, element, attrs, ngModelCtrl) {
             var hotkeys = [KEYS.enter, KEYS.comma, KEYS.semicolon, KEYS.space, KEYS.backspace, KEYS.leftArrow, KEYS.rightArrow],
                 tagList = scope.tagList,
@@ -257,10 +263,6 @@ tagsInput.directive('tagsInput', ["$timeout","$document","tagsInputConfig", func
                 options = scope.options,
                 input = element.find('input'),
                 getInputText;
-
-            if (options.tagsExtraAttrs) {
-                angular.element(element[0].getElementsByClassName('tags')).attr(scope.$eval(options.tagsExtraAttrs));
-            }
 
             getInputText = function(){
                 if (scope.tagInputForm.tagInput.$valid){
