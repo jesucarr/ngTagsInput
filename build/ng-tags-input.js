@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-02-03 15:01:17 +0100
+ * Generated at 2015-02-17 09:55:10 +0100
  */
 (function() {
 'use strict';
@@ -91,6 +91,7 @@ var tagsInput = angular.module('ngTagsInput', []);
  * @param {number=} tabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [type=text] Input type for the control.
+ * @param {string=} [autofocus=text] Autofocus property.
  * @param {string=} [autocomplete=on] Autocomplete option.
  * @param {number=} [minLength=3] Minimum length for a new tag.
  * @param {number=} maxLength Maximum length allowed for a new tag.
@@ -198,6 +199,7 @@ tagsInput.directive('tagsInput', ["$timeout","$document","$parse","tagsInputConf
         controller: ["$scope","$attrs","$element", function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
                 inputId: [String, 'text'],
+                autofocus: [Boolean, false],
                 tagsExtraAttrs: [String, ''],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
@@ -419,6 +421,10 @@ tagsInput.directive('tagsInput', ["$timeout","$document","$parse","tagsInputConf
             element.find('div').on('click', function() {
                 input[0].focus();
             });
+
+            if (options.autofocus) {
+                input[0].autofocus = true;
+            }
         }
     };
 }]);

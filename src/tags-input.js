@@ -15,6 +15,7 @@
  * @param {number=} tabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [type=text] Input type for the control.
+ * @param {boolean=} [autofocus=false] Autofocus property.
  * @param {string=} [autocomplete=on] Autocomplete option.
  * @param {number=} [minLength=3] Minimum length for a new tag.
  * @param {number=} maxLength Maximum length allowed for a new tag.
@@ -122,6 +123,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, $parse, tagsInput
         controller: function($scope, $attrs, $element) {
             tagsInputConfig.load('tagsInput', $scope, $attrs, {
                 inputId: [String, 'text'],
+                autofocus: [Boolean, false],
                 tagsExtraAttrs: [String, ''],
                 type: [String, 'text'],
                 autocomplete: [String, 'on'],
@@ -343,6 +345,10 @@ tagsInput.directive('tagsInput', function($timeout, $document, $parse, tagsInput
             element.find('div').on('click', function() {
                 input[0].focus();
             });
+
+            if (options.autofocus) {
+                input[0].autofocus = true;
+            }
         }
     };
 });
