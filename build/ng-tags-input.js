@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-02-17 09:55:10 +0100
+ * Generated at 2015-02-18 16:41:52 +0100
  */
 (function() {
 'use strict';
@@ -91,7 +91,7 @@ var tagsInput = angular.module('ngTagsInput', []);
  * @param {number=} tabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [type=text] Input type for the control.
- * @param {string=} [autofocus=text] Autofocus property.
+ * @param {boolean=} [autofocus=false] Autofocus property.
  * @param {string=} [autocomplete=on] Autocomplete option.
  * @param {number=} [minLength=3] Minimum length for a new tag.
  * @param {number=} maxLength Maximum length allowed for a new tag.
@@ -425,6 +425,11 @@ tagsInput.directive('tagsInput', ["$timeout","$document","$parse","tagsInputConf
             if (options.autofocus) {
                 input[0].autofocus = true;
             }
+            attrs.$observe('placeholder', function (value) {
+                if (value) {
+                    options.placeholder = value;
+                }
+            });
         }
     };
 }]);

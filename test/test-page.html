@@ -43,8 +43,8 @@
 </head>
 <body ng-controller="Ctrl">
 <input type="checkbox" ng-model="visible"/>
-  <form name="form">
-    <tags-input autofocus="true" tags-extra-attrs="{customattr: 'yes'}" name="tags" ng-if="visible" ng-init="tags2=['item1', 'item2', 'item3'];focus()" ng-model="tags2" display-property="label"
+  <form name="form" ng-init="placeholderValue=1">
+    <tags-input placeholder="{{placeholderValue}}" tags-extra-attrs="{customattr: 'yes'}" name="tags" ng-if="visible" ng-init="tags2=['item1', 'item2', 'item3'];focus()" ng-model="tags2" display-property="label"
                 add-on-enter="{{addOnEnter}}"
                 add-on-blur="true"
                 placeholder="{{placeholder}}"
@@ -58,6 +58,8 @@
       </auto-complete>
     </tags-input>
 
+    Placeholder Value: {{placeholderValue}}
+    <button ng-click="placeholderValue = placeholderValue + 1" >change placeholder</button>
     <p>Valid: {{form.tags.$valid}}</p>
     <p>Errors: {{form.tags.$error}}</p>
   </form>

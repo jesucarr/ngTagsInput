@@ -349,6 +349,11 @@ tagsInput.directive('tagsInput', function($timeout, $document, $parse, tagsInput
             if (options.autofocus) {
                 input[0].autofocus = true;
             }
+            attrs.$observe('placeholder', function (value) {
+                if (value) {
+                    options.placeholder = value;
+                }
+            });
         }
     };
 });
