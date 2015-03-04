@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-02-18 16:41:52 +0100
+ * Generated at 2015-03-04 18:34:00 +0100
  */
 (function() {
 'use strict';
@@ -851,7 +851,7 @@ tagsInput.provider('tagsInputConfig', function() {
 /* HTML templates */
 tagsInput.run(["$templateCache", function($templateCache) {
     $templateCache.put('ngTagsInput/tags-input.html',
-    "<div class=\"host\" tabindex=\"-1\" ti-transclude-append=\"\"><div class=\"tags\" ng-class=\"{focused: hasFocus}\"><ul class=\"tag-list\"><li class=\"tag-item\" ng-repeat=\"tag in tagList.items track by track(tag)\" ng-class=\"{ selected: $index == tagList.selected }\"><span ng-click=\"tagList.select($index)\">{{getDisplayText(tag)}}</span> <a class=\"remove-button\" ng-click=\"tagList.remove($index)\">{{options.removeTagSymbol}}</a></li></ul><ng-form name=\"tagInputForm\"><input name=\"tagInput\" id=\"{{options.inputId}}\" type=\"{{options.type}}\" autocomplete=\"{{options.autocomplete}}\" class=\"input\" placeholder=\"{{options.placeholder}}\" tabindex=\"{{options.tabindex}}\" ng-model=\"newTag.text\" tag-change=\"\" ng-trim=\"false\" ng-class=\"{'invalid-tag': newTag.invalid}\" ti-autosize=\"\" novalidate=\"\"></ng-form></div></div>"
+    "<div class=\"host\" tabindex=\"-1\" ti-transclude-append=\"\"><div class=\"tags\" ng-class=\"{focused: hasFocus}\"><ul class=\"tag-list\" ng-if=\"tagList.items.length > 0\"><li class=\"tag-item\" ng-repeat=\"tag in tagList.items track by track(tag)\" ng-class=\"{ selected: $index == tagList.selected }\"><span ng-click=\"tagList.select($index)\">{{getDisplayText(tag)}}</span> <a class=\"remove-button\" ng-click=\"tagList.remove($index)\">{{options.removeTagSymbol}}</a></li></ul><ng-form name=\"tagInputForm\"><input name=\"tagInput\" id=\"{{options.inputId}}\" type=\"{{options.type}}\" autocomplete=\"{{options.autocomplete}}\" class=\"input\" placeholder=\"{{options.placeholder}}\" tabindex=\"{{options.tabindex}}\" ng-model=\"newTag.text\" tag-change=\"\" ng-trim=\"false\" ng-class=\"{'invalid-tag': newTag.invalid}\" ti-autosize=\"\" novalidate=\"\"></ng-form></div></div>"
   );
 
   $templateCache.put('ngTagsInput/auto-complete.html',
