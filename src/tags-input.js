@@ -46,8 +46,11 @@
  *    is available as $tag. This method must return either true or false. If false, the tag will not be removed.
  * @param {expression=} [onTagRemoved=NA] Expression to evaluate upon removing an existing tag. The removed tag is
  *    available as $tag.
+ * @param {string=} [tagsExtraAttrs=NA] Ads extra attributes to the .tags element in the template, useful to add
+ *    extra directives or any other HTML tag needed to that element. The value should be an object where the keys are the
+ *    attribute and the value the attribute value. For example tags-extra-attrs="{myelement: 'myvalue'}".
  */
-tagsInput.directive('tagsInput', function($timeout, $document, $window, tagsInputConfig, tiUtil) {
+tagsInput.directive('tagsInput', function($timeout, $document, $parse, $window, tagsInputConfig, tiUtil) {
     function TagList(options, events, onTagAdding, onTagRemoving) {
         var self = {}, getTagText, setTagText, tagIsValid;
 
@@ -169,6 +172,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, $window, tagsInpu
                 type: [String, 'text', validateType],
                 placeholder: [String, 'Add a tag'],
                 inputId: [String, null],
+                tagsExtraAttrs: [String, null],
                 tabindex: [Number, null],
                 removeTagSymbol: [String, String.fromCharCode(215)],
                 replaceSpacesWithDashes: [Boolean, true],
@@ -242,6 +246,13 @@ tagsInput.directive('tagsInput', function($timeout, $document, $window, tagsInpu
                 };
             };
         },
+        compile: function(element, attrs) {
+            if (attrs.tagsExtraAttrs) {
+                angular.element(element[0].getElementsByClassName('tags')).attr($parse(attrs.tagsExtraAttrs)());
+            }
+            return this.link;
+        },
+
         link: function(scope, element, attrs, ngModelCtrl) {
             var hotkeys = [KEYS.enter, KEYS.comma, KEYS.semicolon, KEYS.space, KEYS.backspace, KEYS.delete, KEYS.left, KEYS.right],
                 tagList = scope.tagList,
