@@ -476,8 +476,7 @@ describe('tags-input directive', function() {
         });
     });
 
-
-    describe('tabindex option', function() {
+    describe('autofocus option', function() {
         it('sets the input field autofocus', function() {
             // Arrange/Act
             compile('autofocus="true"');
