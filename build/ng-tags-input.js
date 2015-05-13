@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-05-13 12:37:34 +0200
+ * Generated at 2015-05-13 18:54:35 +0200
  */
 (function() {
 'use strict';
@@ -396,11 +396,11 @@ tagsInput.directive('tagsInput', ["$timeout", "$document", "$parse", "$window", 
             };
 
             events
-                .on('tag-added', scope.onTagAdded)
                 .on('invalid-tag', scope.onInvalidTag)
                 .on('tag-removed', scope.onTagRemoved)
-                .on('tag-added', function() {
+                .on('tag-added', function(tag) {
                     scope.newTag.setText('');
+                    scope.onTagAdded(tag);
                 })
                 .on('tag-added tag-removed', function() {
                     scope.tags = tagList.items;
