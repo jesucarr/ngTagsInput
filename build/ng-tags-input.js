@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-05-13 11:38:33 +0200
+ * Generated at 2015-05-13 12:37:34 +0200
  */
 (function() {
 'use strict';
@@ -337,6 +337,12 @@ tagsInput.directive('tagsInput', ["$timeout", "$document", "$parse", "$window", 
 
             attrs.$observe('disabled', function(value) {
                 scope.disabled = value;
+            });
+
+            attrs.$observe('placeholder', function(value) {
+                if (value) {
+                    options.placeholder = value;
+                }
             });
 
             if (options.autofocus) {
