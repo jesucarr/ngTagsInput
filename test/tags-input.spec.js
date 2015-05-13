@@ -476,6 +476,23 @@ describe('tags-input directive', function() {
         });
     });
 
+
+    describe('tabindex option', function() {
+        it('sets the input field autofocus', function() {
+            // Arrange/Act
+            compile('autofocus="true"');
+
+            // Assert
+            expect(getInput().attr('autofocus')).toBe('autofocus');
+        });
+
+        it('initializes the option to null', function() {
+            // Arrange/Act
+            compile();
+            expect(isolateScope.options.autofocus).toBe(false);
+         });
+     });
+
     describe('tagsExtraAttrs option', function() {
         it('sets the tags extra attributes', function() {
             // Arrange/Act
