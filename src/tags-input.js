@@ -309,6 +309,12 @@ tagsInput.directive('tagsInput', function($timeout, $document, $parse, $window, 
                 scope.disabled = value;
             });
 
+            attrs.$observe('placeholder', function(value) {
+                if (value) {
+                    options.placeholder = value;
+                }
+            });
+
             if (options.autofocus) {
                 input[0].autofocus = true;
             }
