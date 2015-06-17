@@ -443,7 +443,7 @@ describe('tags-input directive', function() {
     describe('tabindex option', function() {
         it('sets the input field tab index', function() {
             // Arrange/Act
-            compile('tabindex="1"');
+            compile('input-tabindex="1"');
 
             // Assert
             expect(getInput().attr('tabindex')).toBe('1');
@@ -454,7 +454,7 @@ describe('tags-input directive', function() {
             compile();
 
             // Assert
-            expect(isolateScope.options.tabindex).toBeNull();
+            expect(isolateScope.options.inputTabindex).toBeNull();
         });
     });
 
