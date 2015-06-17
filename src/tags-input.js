@@ -13,7 +13,7 @@
  * @param {string=} [keyProperty=text] Property to be used as a unique identifier for the tag.
  * @param {string=} [displayProperty=text] Property to be rendered as the tag label.
  * @param {string=} [type=text] Type of the input element. Only 'text', 'email' and 'url' are supported values.
- * @param {number=} tabindex Tab order of the control.
+ * @param {number=} inputTabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [inputId=NA] Sets the input id.
  * @param {boolean=} [autofocus=false] Autofocus property.
@@ -175,7 +175,7 @@ tagsInput.directive('tagsInput', function($timeout, $document, $parse, $window, 
                 inputId: [String, null],
                 tagsExtraAttrs: [String, null],
                 autofocus: [Boolean, false],
-                tabindex: [Number, null],
+                inputTabindex: [Number, null],
                 removeTagSymbol: [String, String.fromCharCode(215)],
                 replaceSpacesWithDashes: [Boolean, true],
                 minLength: [Number, 3],
