@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-05-13 18:54:35 +0200
+ * Generated at 2015-06-17 16:32:15 +0200
  */
 (function() {
 'use strict';
@@ -43,7 +43,7 @@ var tagsInput = angular.module('ngTagsInput', []);
  * @param {string=} [keyProperty=text] Property to be used as a unique identifier for the tag.
  * @param {string=} [displayProperty=text] Property to be rendered as the tag label.
  * @param {string=} [type=text] Type of the input element. Only 'text', 'email' and 'url' are supported values.
- * @param {number=} tabindex Tab order of the control.
+ * @param {number=} inputTabindex Tab order of the control.
  * @param {string=} [placeholder=Add a tag] Placeholder text for the control.
  * @param {string=} [inputId=NA] Sets the input id.
  * @param {boolean=} [autofocus=false] Autofocus property.
@@ -205,7 +205,7 @@ tagsInput.directive('tagsInput', ["$timeout", "$document", "$parse", "$window", 
                 inputId: [String, null],
                 tagsExtraAttrs: [String, null],
                 autofocus: [Boolean, false],
-                tabindex: [Number, null],
+                inputTabindex: [Number, null],
                 removeTagSymbol: [String, String.fromCharCode(215)],
                 replaceSpacesWithDashes: [Boolean, true],
                 minLength: [Number, 3],
@@ -1156,7 +1156,7 @@ tagsInput.factory('tiUtil', ["$timeout", function($timeout) {
 /* HTML templates */
 tagsInput.run(["$templateCache", function($templateCache) {
     $templateCache.put('ngTagsInput/tags-input.html',
-    "<div class=\"host\" tabindex=\"-1\" ng-click=\"eventHandlers.host.click()\" ti-transclude-append><div class=\"tags\" ng-class=\"{focused: hasFocus}\"><ul class=\"tag-list\" ng-if=\"tagList.items.length > 0\"><li class=\"tag-item\" ng-repeat=\"tag in tagList.items track by track(tag)\" ng-class=\"{ selected: tag == tagList.selected }\"><ti-tag-item data=\"tag\"></ti-tag-item></li></ul><input class=\"input\" autocomplete=\"off\" ng-model=\"newTag.text\" ng-change=\"eventHandlers.input.change(newTag.text)\" ng-keydown=\"eventHandlers.input.keydown($event)\" ng-focus=\"eventHandlers.input.focus($event)\" ng-blur=\"eventHandlers.input.blur($event)\" ng-paste=\"eventHandlers.input.paste($event)\" ng-trim=\"false\" ng-class=\"{'invalid-tag': newTag.invalid}\" ng-disabled=\"disabled\" ti-bind-attrs=\"{id: options.inputId, type: options.type, placeholder: options.placeholder, tabindex: options.tabindex, spellcheck: options.spellcheck}\" ti-autosize></div></div>"
+    "<div class=\"host\" tabindex=\"-1\" ng-click=\"eventHandlers.host.click()\" ti-transclude-append><div class=\"tags\" ng-class=\"{focused: hasFocus}\"><ul class=\"tag-list\" ng-if=\"tagList.items.length > 0\"><li class=\"tag-item\" ng-repeat=\"tag in tagList.items track by track(tag)\" ng-class=\"{ selected: tag == tagList.selected }\"><ti-tag-item data=\"tag\"></ti-tag-item></li></ul><input class=\"input\" autocomplete=\"off\" ng-model=\"newTag.text\" ng-change=\"eventHandlers.input.change(newTag.text)\" ng-keydown=\"eventHandlers.input.keydown($event)\" ng-focus=\"eventHandlers.input.focus($event)\" ng-blur=\"eventHandlers.input.blur($event)\" ng-paste=\"eventHandlers.input.paste($event)\" ng-trim=\"false\" ng-class=\"{'invalid-tag': newTag.invalid}\" ng-disabled=\"disabled\" ti-bind-attrs=\"{id: options.inputId, type: options.type, placeholder: options.placeholder, tabindex: options.inputTabindex, spellcheck: options.spellcheck}\" ti-autosize></div></div>"
   );
 
   $templateCache.put('ngTagsInput/tag-item.html',
