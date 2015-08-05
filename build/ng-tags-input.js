@@ -5,7 +5,7 @@
  * Copyright (c) 2013-2015 Michael Benford
  * License: MIT
  *
- * Generated at 2015-06-17 16:32:15 +0200
+ * Generated at 2015-08-05 15:41:36 +0200
  */
 (function() {
 'use strict';
@@ -80,6 +80,9 @@ var tagsInput = angular.module('ngTagsInput', []);
  * @param {string=} [tagsExtraAttrs=NA] Ads extra attributes to the .tags element in the template, useful to add
  *    extra directives or any other HTML tag needed to that element. The value should be an object where the keys are the
  *    attribute and the value the attribute value. For example tags-extra-attrs="{myelement: 'myvalue'}".
+  * @param {string=} [inputExtraAttrs=NA] Ads extra attributes to the .input element in the template, useful to add
+ *    extra directives or any other HTML tag needed to that element. The value should be an object where the keys are the
+ *    attribute and the value the attribute value. For example input-extra-attrs="{myelement: 'myvalue'}".
  */
 tagsInput.directive('tagsInput', ["$timeout", "$document", "$parse", "$window", "tagsInputConfig", "tiUtil", function($timeout, $document, $parse, $window, tagsInputConfig, tiUtil) {
     function TagList(options, events, onTagAdding, onTagRemoving) {
@@ -281,6 +284,9 @@ tagsInput.directive('tagsInput', ["$timeout", "$document", "$parse", "$window", 
         compile: function(element, attrs) {
             if (attrs.tagsExtraAttrs) {
                 angular.element(element[0].getElementsByClassName('tags')).attr($parse(attrs.tagsExtraAttrs)());
+            }
+            if (attrs.inputExtraAttrs) {
+                angular.element(element[0].getElementsByClassName('input')).attr($parse(attrs.inputExtraAttrs)());
             }
             return this.link;
         },
